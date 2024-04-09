@@ -20,7 +20,7 @@
 
 
 2. Présentation de Vitest
-    - Présentation de Vitest : qu'est-ce que c'est et pourquoi l'utiliser ?
+    - Présentation de Vitest : Qu'est-ce que c'est et pourquoi l'utiliser ?
     - Installation de Vitest dans un projet JavaScript.
 
 3. Écriture de tests unitaires avec Vitest
