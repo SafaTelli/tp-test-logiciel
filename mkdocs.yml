@@ -1,0 +1,30 @@
+site_name: TP TEST LOGICIEL - GL4 - 2023/2024
+copyright : Safa Telli
+
+theme:
+    name: material
+    locale: fr
+    static_templates:
+        - sitemap.html
+    include_sidebar: true
+    palette:
+      primary: red
+    logo: assets/logo.png
+    favicon: assets/logo.png
+    features:
+      - content.code.copy
+nav:
+    - Introduction: 'index.md'
+    - 'TP1: Tests Unitaires': 'tp1.md'
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - def_list

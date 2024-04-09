@@ -1,0 +1,1317 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>TP1: Tests Unitaires - TP TEST LOGICIEL - GL4 - 2023/2024</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#apprendre-les-tests-unitaires-en-javascript-avec-vitest" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TP TEST LOGICIEL - GL4 - 2023/2024" class="md-header__button md-logo" aria-label="TP TEST LOGICIEL - GL4 - 2023/2024" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TP TEST LOGICIEL - GL4 - 2023/2024
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP1: Tests Unitaires
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TP TEST LOGICIEL - GL4 - 2023/2024" class="md-nav__button md-logo" aria-label="TP TEST LOGICIEL - GL4 - 2023/2024" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    TP TEST LOGICIEL - GL4 - 2023/2024
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TP1: Tests Unitaires
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    TP1: Tests Unitaires
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duree-estimee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durée estimée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plan-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-aux-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction aux tests unitaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction aux tests unitaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-des-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Définition des tests unitaires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-de-base-des-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts de base des tests unitaires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avantages-des-tests-unitaires-dans-le-developpement-logiciel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avantages des tests unitaires dans le développement logiciel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-des-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs des tests unitaires
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-de-vitest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Présentation de Vitest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecriture-de-tests-unitaires-en-javascript-avec-vitest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Écriture de tests unitaires en JavaScript avec Vitest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Écriture de tests unitaires en JavaScript avec Vitest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-des-tests-avec-vitest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure des tests avec Vitest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecriture-de-tests-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Écriture de tests simples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-des-assertions-pour-verifier-les-resultats-attendus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation des assertions pour vérifier les résultats attendus.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utilisation des assertions pour vérifier les résultats attendus.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-fonctions-asynchrones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestion des fonctions asynchrones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des fonctions asynchrones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-dawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation d'await
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestion des erreurs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attente-explicite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attente explicite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duree-estimee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durée estimée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plan-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-aux-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction aux tests unitaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction aux tests unitaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-des-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Définition des tests unitaires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-de-base-des-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts de base des tests unitaires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avantages-des-tests-unitaires-dans-le-developpement-logiciel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avantages des tests unitaires dans le développement logiciel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-des-tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs des tests unitaires
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-de-vitest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Présentation de Vitest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecriture-de-tests-unitaires-en-javascript-avec-vitest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Écriture de tests unitaires en JavaScript avec Vitest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Écriture de tests unitaires en JavaScript avec Vitest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-des-tests-avec-vitest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure des tests avec Vitest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecriture-de-tests-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Écriture de tests simples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-des-assertions-pour-verifier-les-resultats-attendus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation des assertions pour vérifier les résultats attendus.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utilisation des assertions pour vérifier les résultats attendus.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-fonctions-asynchrones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestion des fonctions asynchrones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des fonctions asynchrones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-dawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation d'await
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestion des erreurs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attente-explicite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attente explicite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="apprendre-les-tests-unitaires-en-javascript-avec-vitest">Apprendre les tests unitaires en JavaScript avec Vitest</h1>
+<p><img alt="Screenshot" src="../assets/vitest.png" /></p>
+<h2 id="objectifs-du-tp">Objectifs du TP</h2>
+<ol>
+<li>Comprendre l'importance des tests unitaires dans le développement logiciel.</li>
+<li>Apprendre à écrire des tests unitaires en JavaScript.</li>
+<li>Maîtriser l'utilisation de Vitest pour l'exécution des tests unitaires.</li>
+</ol>
+<h2 id="duree-estimee">Durée estimée</h2>
+<p>3 heures</p>
+<h2 id="plan-du-tp">Plan du TP</h2>
+<ol>
+<li>
+<p>Introduction aux tests unitaires</p>
+<ul>
+<li>Définition des tests unitaires.</li>
+<li>Avantages des tests unitaires dans le développement logiciel.</li>
+</ul>
+</li>
+<li>
+<p>Présentation de Vitest</p>
+<ul>
+<li>Présentation de Vitest : qu'est-ce que c'est et pourquoi l'utiliser ?</li>
+<li>Installation de Vitest dans un projet JavaScript.</li>
+</ul>
+</li>
+<li>
+<p>Écriture de tests unitaires avec Vitest</p>
+<ul>
+<li>Structure des tests avec Vitest.</li>
+<li>Écriture de tests simples pour les fonctions JavaScript.</li>
+<li>Utilisation des assertions pour vérifier les résultats attendus.</li>
+<li>Techniques avancées d'écriture de tests avec Vitest</li>
+</ul>
+</li>
+</ol>
+<h2 id="introduction-aux-tests-unitaires">Introduction aux tests unitaires</h2>
+<h3 id="definition-des-tests-unitaires">Définition des tests unitaires</h3>
+<ul>
+<li>Les tests unitaires sont des procédures pour vérifier si une unité de code (fonction, méthode, classe) fonctionne correctement.</li>
+<li>Objectif principal : isoler et tester chaque composant de manière indépendante.</li>
+</ul>
+<h3 id="concepts-de-base-des-tests-unitaires">Concepts de base des tests unitaires</h3>
+<ol>
+<li>
+<p>Compréhension de l'unité de test</p>
+<ul>
+<li>Une unité de test est la plus petite partie testable d'une application.</li>
+<li>Elle devrait être simple, isolée et indépendante des autres parties du code.</li>
+</ul>
+</li>
+<li>
+<p>Principes fondamentaux des tests unitaires</p>
+<ul>
+<li>F.I.R.S.T. : Les tests unitaires doivent être Fast, Isolated, Repeatable, Self-validating et Timely.</li>
+<li>Test Driven Development (TDD) : Une approche de développement où les tests unitaires sont écrits avant le code de production.</li>
+</ul>
+</li>
+<li>
+<p>Différence entre les tests unitaires et les autres types de tests</p>
+<ul>
+<li>Tests d'intégration : Testent les interactions entre les différentes parties d'une application.</li>
+<li>Tests système : Testent l'application dans son ensemble pour s'assurer qu'elle fonctionne comme prévu.</li>
+</ul>
+</li>
+<li>
+<p>Outils couramment utilisés pour les tests unitaires</p>
+<ul>
+<li>Frameworks de tests : Jest, Mocha, Jasmine, etc.</li>
+<li>Bibliothèques d'assertions : Chai, Assert, etc.</li>
+<li>Outils de mocking : Sinon, Mockito, etc.</li>
+</ul>
+</li>
+</ol>
+<h3 id="avantages-des-tests-unitaires-dans-le-developpement-logiciel">Avantages des tests unitaires dans le développement logiciel</h3>
+<ul>
+<li>Réduction des bugs : Les tests unitaires permettent de détecter et corriger les erreurs dès leur apparition.</li>
+<li>Facilitation de la maintenance : En fournissant une rétroaction rapide sur les changements de code, les tests unitaires rendent la maintenance plus efficace.</li>
+<li>Amélioration de la conception : Les tests unitaires encouragent une conception modulaire et une meilleure séparation des préoccupations.</li>
+<li>Accélération du développement : En automatisant les tests, les développeurs gagnent du temps et peuvent se concentrer sur de nouvelles fonctionnalités.</li>
+</ul>
+<h3 id="objectifs-des-tests-unitaires">Objectifs des tests unitaires</h3>
+<ul>
+<li>Assurer la fonctionnalité attendue de chaque composant individuel.</li>
+<li>Réduire les risques lors des modifications ou des ajouts de fonctionnalités.</li>
+<li>Fournir une documentation vivante du comportement attendu du code.</li>
+</ul>
+<h2 id="presentation-de-vitest">Présentation de Vitest</h2>
+<ol>
+<li>
+<p>Introduction à Vitest : qu'est-ce que c'est ?</p>
+<ul>
+<li>Vitest est un framework de tests unitaires pour JavaScript.</li>
+<li>Il offre une syntaxe simple et expressive pour écrire des tests unitaires.</li>
+</ul>
+</li>
+<li>
+<p>Raisons d'utiliser Vitest pour les tests unitaires</p>
+<ul>
+<li>Facilité d'utilisation : Vitest est facile à apprendre et à utiliser pour les développeurs JavaScript.</li>
+<li>Performance : Vitest offre des performances élevées pour l'exécution des tests unitaires.</li>
+</ul>
+</li>
+<li>
+<p>Caractéristiques principales de Vitest</p>
+</li>
+<li>Syntaxe intuitive : Les tests unitaires avec Vitest sont écrits de manière déclarative et facile à comprendre.</li>
+<li>
+<p>Support des promesses : Vitest prend en charge les tests asynchrones avec des promesses.</p>
+</li>
+<li>
+<p>Comparaison avec d'autres frameworks de tests unitaires</p>
+</li>
+<li>Comparaison avec Jest, Mocha, Jasmine, etc.</li>
+<li>Points forts et faiblesses de Vitest par rapport aux autres frameworks.</li>
+</ol>
+<p>Installation de Vitest dans un projet JavaScript
+a. Prérequis pour installer Vitest
+- Node.js installé sur le système
+- Un projet JavaScript existant ou nouvellement créé</p>
+<p>b. Installation de Vitest via npm ou yarn
+- Utilisation de la commande npm install vitest ou yarn add vitest pour installer Vitest dans le projet.</p>
+<p>c. Configuration de Vitest dans un projet JavaScript
+- Configuration initiale de Vitest dans le fichier de configuration du projet.
+- Spécification des répertoires de tests et de leur structure.</p>
+<p>d. Exemples de tests unitaires simples utilisant Vitest
+- Écriture et exécution de tests unitaires simples pour des fonctions JavaScript de base.
+- Utilisation des différentes fonctionnalités de Vitest dans les tests unitaires.</p>
+<h2 id="ecriture-de-tests-unitaires-en-javascript-avec-vitest">Écriture de tests unitaires en JavaScript avec Vitest</h2>
+<p>Dans cette partie, nous allons plonger dans l'écriture de tests unitaires en JavaScript en utilisant Vitest. Nous allons commencer par comprendre la structure de base des tests avec Vitest, puis nous allons écrire des tests simples pour des fonctions JavaScript, en utilisant des assertions pour vérifier les résultats attendus.</p>
+<h3 id="structure-des-tests-avec-vitest">Structure des tests avec Vitest</h3>
+<p>Vitest propose une structure simple et claire pour l'écriture des tests unitaires. Voici un exemple de structure de test avec Vitest :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vitest&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;Nom du test&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="c1">// Corps du test</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">});</span>
+</code></pre></div>
+<p>Dans cet exemple, nous utilisons la fonction test fournie par Vitest pour définir un nouveau test. À l'intérieur de la fonction test, nous spécifions le nom du test et le corps du test, où nous effectuons nos vérifications.</p>
+<h3 id="ecriture-de-tests-simples">Écriture de tests simples</h3>
+<p>Voyons maintenant comment écrire des tests simples pour des fonctions JavaScript. Supposons que nous ayons une fonction add qui additionne deux nombres. Voici comment nous pourrions écrire un test pour cette fonction :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vitest&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./math&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Supposons que &#39;add&#39; est une fonction exportée depuis un fichier &#39;math.js&#39;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;Test de la fonction add&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">});</span>
+</code></pre></div>
+<div class="admonition activité-1">
+<p class="admonition-title">Activité-1</p>
+<ol>
+<li>
+<p>Créer un nouveau projet TP1 avec votre IDE préféré</p>
+</li>
+<li>
+<p>Créer un fichier <code>math.js</code> dans lequel ajouter une fonction <code>add</code> qui calcule la somme de deux entiers.</p>
+</li>
+<li>
+<p>Créer un dossier <code>test</code>, sous lequel créer un fichier que vous nommez <code>math.test.js</code>.</p>
+</li>
+<li>
+<p>Suivre les étapes mentionnées dans la section 2 pour installer Vitest.</p>
+</li>
+<li>
+<p>Modifier le fichier package.json pour ajouter la section "scripts", Ajoutez la section "scripts" dans votre fichier package.json comme suit :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vite&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vite build&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vite preview&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vitest&quot;</span><span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Copier le code ci-dessus pour tester la fonction <code>add</code>.</p>
+</li>
+<li>
+<p>Exécuter le test avec la commande <code>npm run test</code></p>
+</li>
+</ol>
+</div>
+<h3 id="utilisation-des-assertions-pour-verifier-les-resultats-attendus">Utilisation des assertions pour vérifier les résultats attendus.</h3>
+<p>Vitest utilise des assertions pour vérifier si le comportement attendu est respecté par le code testé. Voici quelques-unes des assertions les plus couramment utilisées :</p>
+<ul>
+<li><strong><code>expect(value).toBe(expected)</code></strong>: Vérifie si <code>value</code> est strictement égal à <code>expected</code>.</li>
+<li><strong><code>expect(value).toEqual(expected)</code></strong>: Vérifie si <code>value</code> est égal à <code>expected</code> en effectuant une comparaison en profondeur pour les objets et les tableaux.</li>
+<li><strong><code>expect(value).toBeTruthy()</code></strong>: Vérifie si <code>value</code> est évalué à <code>true</code>.</li>
+<li><strong><code>expect(value).toBeFalsy()</code></strong>: Vérifie si <code>value</code> est évalué à <code>false</code>.</li>
+<li><strong><code>expect(value).toContain(expected)</code></strong>: Vérifie si <code>value</code> contient <code>expected</code> (pour les chaînes de caractères et les tableaux).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Visitez <a href="https://www.chaijs.com/api/bdd/">ce lien</a> pour plus de détails sur les assertions.</p>
+</div>
+<h4 id="exercice-1">Exercice 1</h4>
+<h5 id="objectif">Objectif</h5>
+<p>Écrire des tests unitaires pour une fonction de manipulation de chaînes.</p>
+<h5 id="description">Description</h5>
+<p>La tâche consiste à écrire des tests unitaires pour une fonction de manipulation de chaînes implémentée en JavaScript. La fonction prendra une chaîne de caractères en entrée et effectuera une opération de transformation sur cette chaîne.</p>
+<div class="admonition activité">
+<p class="admonition-title">Activité</p>
+<ol>
+<li>Implémentez la fonction transformer qui transforme une chaine de caractères en Majuscule.</li>
+<li>
+<p>Écrivez au moins trois cas de tests unitaires pour la fonction transformer. Assurez-vous de tester les cas suivants :</p>
+<ul>
+<li>Une chaîne vide.</li>
+<li>Une chaîne avec des caractères en minuscules.</li>
+<li>Une chaîne avec des caractères spéciaux.</li>
+</ul>
+</li>
+<li>
+<p>Utilisez différentes assertions pour vérifier si la fonction transformer renvoie la chaîne transformée correctement.</p>
+</li>
+<li>Assurez-vous que vos tests couvrent tous les cas de figure possibles pour garantir que la fonction de manipulation de chaînes fonctionne correctement dans diverses situations</li>
+</ol>
+</div>
+<h4 id="exercice-2">Exercice 2</h4>
+<h5 id="objectif_1">Objectif</h5>
+<p>Écrire des tests unitaires pour une fonction de tri.</p>
+<h5 id="description_1">Description</h5>
+<p>La tâche consiste à écrire des tests unitaires pour une fonction de tri implémentée en JavaScript. La fonction de tri prendra un tableau de nombres en entrée et triera ces nombres par ordre croissant.</p>
+<div class="admonition activité">
+<p class="admonition-title">Activité</p>
+<ol>
+<li>Implémentez la fonction trier en JS.</li>
+<li>Ecrivez au moins 3 cas de test.</li>
+<li>Utilisez des assertions pour vérifier si la fonction trier renvoie le tableau trié correctement.</li>
+<li>Assurez-vous que vos tests couvrent tous les cas de figure possibles, y compris les tableaux déjà triés, les tableaux inversés, etc.</li>
+<li>Assurez-vous de tester également les cas limites et les situations d'erreur potentielles, comme les tableaux avec des éléments non numériques.</li>
+</ol>
+</div>
+<h4 id="exercice-3">Exercice 3</h4>
+<h5 id="objectif_2">Objectif</h5>
+<p>Test au valeurs limites : Boundary testing.</p>
+<h5 id="description_2">Description</h5>
+<p>La fonction isPriceInRange(price, min, max) vérifie si un prix donné se situe dans une plage donnée.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">isPriceInRange</span><span class="p">(</span><span class="nx">price</span><span class="p">,</span><span class="w"> </span><span class="nx">min</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">min</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">max</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition activité">
+<p class="admonition-title">Activité</p>
+<p>Écrivez des cas de test pour cette fonction en couvrant les limites de la plage ainsi que les cas où le prix est en dehors de la plage.</p>
+</div>
+<h3 id="gestion-des-fonctions-asynchrones">Gestion des fonctions asynchrones</h3>
+<p>Les fonctions asynchrones peuvent retourner des promesses ou utiliser des rappels (callbacks) pour indiquer la fin de leur exécution. Lorsque vous testez de telles fonctions, vous devez vous assurer que vos tests attendent la fin de l'exécution de ces fonctions avant de vérifier les résultats. Vitest facilite cette attente en vous permettant d'utiliser les mots-clés await ou done pour gérer l'asynchronisme dans vos tests.</p>
+<h4 id="utilisation-dawait">Utilisation d'await</h4>
+<p>Lorsque vous testez des fonctions asynchrones avec Vitest, vous pouvez utiliser le mot-clé <strong>await</strong> pour attendre la résolution ou le rejet des promesses retournées par ces fonctions. Cela vous permet d'exécuter des assertions une fois que la promesse est résolue ou rejetée, garantissant ainsi que votre test est exécuté dans le bon ordre et que les résultats attendus sont correctement vérifiés.</p>
+<h4 id="gestion-des-erreurs">Gestion des erreurs</h4>
+<p>Les fonctions asynchrones peuvent générer des erreurs pendant leur exécution, et il est important de les gérer correctement dans vos tests. Vitest vous permet d'utiliser les blocs <strong>try/catch</strong> pour capturer et traiter les erreurs potentielles générées par les fonctions asynchrones lors de l'exécution de vos tests.</p>
+<h4 id="attente-explicite">Attente explicite</h4>
+<p>Dans certains cas, vous devrez peut-être attendre un certain délai avant de vérifier les résultats d'une fonction asynchrone. Vitest fournit des méthodes pour gérer cette attente explicite, comme <strong>setTimeout</strong> ou <strong>setImmediate</strong>, pour s'assurer que votre test donne suffisamment de temps à la fonction asynchrone pour terminer son exécution avant de procéder à la vérification.</p>
+<h4 id="exemple">Exemple</h4>
+<p>Supposons que nous avons une fonction asynchrone fetchData() qui effectue une requête HTTP pour récupérer des données d'un serveur distant. Nous voulons tester cette fonction pour nous assurer qu'elle renvoie les données attendues.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://api.example.com/data&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Failed to fetch data&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
+</code></pre></div>
+<p>Voici comment nous pouvons écrire un test pour cette fonction avec Vitest :</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./fetchData&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import de la fonction à tester</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;fetchData()&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should fetch data from the server&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">();</span><span class="w"> </span><span class="c1">// Appel de la fonction asynchrone</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="c1">// Vérification des résultats attendus</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span><span class="w"> </span><span class="c1">// On s&#39;assure que les données ont été renvoyées</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">data</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// On vérifie que les données renvoyées sont un tableau</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">      </span><span class="c1">// Ajoutez d&#39;autres assertions selon les données attendues</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">      </span><span class="c1">// Si une erreur se produit pendant l&#39;exécution de la fonction asynchrone</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">      </span><span class="c1">// On signale le test comme échoué</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">      </span><span class="nx">fail</span><span class="p">(</span><span class="s1">&#39;Should not throw any error&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">  </span><span class="p">});</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">});</span>
+</code></pre></div>
+Dans cet exemple :</p>
+<p>Nous utilisons <strong>async</strong> dans la fonction de test pour indiquer que le test est asynchrone et qu'il utilise <strong>await</strong> pour attendre la résolution de la promesse retournée par fetchData().
+Nous appelons la fonction fetchData() à l'intérieur du bloc <strong>try/catch</strong> pour capturer toute erreur potentielle qui pourrait survenir lors de son exécution.
+Dans le bloc try, nous effectuons des assertions sur les données renvoyées par la fonction fetchData() pour nous assurer qu'elles correspondent à ce que nous attendons.
+Si une erreur survient pendant l'exécution de la fonction asynchrone (par exemple, une erreur de réseau ou une erreur de syntaxe), elle sera capturée dans le bloc catch et le test sera signalé comme un échec en utilisant <strong>fail()</strong>.</p>
+<h4 id="exercice">Exercice</h4>
+<h5 id="objectif_3">Objectif</h5>
+<p>Implémenter un test pour une fonction asynchrone qui récupère des données d'une API.</p>
+<h5 id="description_3">Description</h5>
+<p>Nous avons une fonction asynchrone appelée fetchRandomUser() qui récupère les données d'un utilisateur aléatoire à partir de l'API "Random User Generator". L'objectif de l'exercice est d'écrire un test pour cette fonction pour vérifier si elle renvoie les données attendues de manière asynchrone.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchRandomUser</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://randomuser.me/api/&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Failed to fetch random user&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span><span class="w"> </span><span class="c1">// Renvoie les informations sur le premier utilisateur dans la liste</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+</code></pre></div></p>
+<div class="admonition activité">
+<p class="admonition-title">Activité</p>
+<p>1.Comprendre la fonction à tester :</p>
+<p>La fonction fetchRandomUser() utilise l'API "Random User Generator" pour récupérer les données d'un utilisateur aléatoire.
+Elle renvoie un objet JSON contenant des informations sur cet utilisateur.</p>
+<p>2.Écrire le test :</p>
+<p>Utilisez Vitest pour écrire un test pour la fonction fetchRandomUser().
+Assurez-vous d'attendre de manière asynchrone la résolution de la promesse retournée par la fonction.
+Vérifiez que les données renvoyées sont bien un objet JSON contenant les informations sur l'utilisateur.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Safa Telli
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+    
+  </body>
+</html>
