@@ -27,7 +27,11 @@
     - Structure des tests avec Vitest.
     - Écriture de tests simples pour les fonctions JavaScript.
     - Utilisation des assertions pour vérifier les résultats attendus.
+    - Gestion des fonctions asynchrones
     - Techniques avancées d'écriture de tests avec Vitest
+
+4. Techniques avancées d'écriture de tests avec Vitest
+    - Utilisation des mocks 
 
 ## Introduction aux tests unitaires
 ### Définition des tests unitaires
@@ -73,28 +77,54 @@
     - Performance : Vitest offre des performances élevées pour l'exécution des tests unitaires.
 
 3. Caractéristiques principales de Vitest
-- Syntaxe intuitive : Les tests unitaires avec Vitest sont écrits de manière déclarative et facile à comprendre.
-- Support des promesses : Vitest prend en charge les tests asynchrones avec des promesses.
+    - Syntaxe intuitive : Les tests unitaires avec Vitest sont écrits de manière déclarative et facile à comprendre.
+    - Support des promesses : Vitest prend en charge les tests asynchrones avec des promesses.
+    - Comparaison avec Jest, Mocha, Jasmine, etc.
+    - Points forts et faiblesses de Vitest par rapport aux autres frameworks.
 
-4. Comparaison avec d'autres frameworks de tests unitaires
-- Comparaison avec Jest, Mocha, Jasmine, etc.
-- Points forts et faiblesses de Vitest par rapport aux autres frameworks.
+4. Installation de Vitest dans un projet JavaScript
 
-Installation de Vitest dans un projet JavaScript
-a. Prérequis pour installer Vitest
-- Node.js installé sur le système
-- Un projet JavaScript existant ou nouvellement créé
+    a. Prérequis pour installer Vitest
 
-b. Installation de Vitest via npm ou yarn
-- Utilisation de la commande npm install vitest ou yarn add vitest pour installer Vitest dans le projet.
+    - Node.js installé sur le système
+    - Un projet JavaScript existant ou nouvellement créé
 
-c. Configuration de Vitest dans un projet JavaScript
-- Configuration initiale de Vitest dans le fichier de configuration du projet.
-- Spécification des répertoires de tests et de leur structure.
 
-d. Exemples de tests unitaires simples utilisant Vitest
-- Écriture et exécution de tests unitaires simples pour des fonctions JavaScript de base.
-- Utilisation des différentes fonctionnalités de Vitest dans les tests unitaires.
+    b. Installation de Vitest via npm
+
+        npm install -D vitest
+        
+
+    c. Configuration de Vitest dans un projet JavaScript
+
+    Une fois que vous avez installé Vitest dans votre projet JavaScript, vous devez le configurer correctement pour qu'il fonctionne efficacement. Voici les étapes de configuration :
+
+    - Configuration initiale de Vitest dans le fichier de configuration du projet.
+
+    Dans le fichier **package.json** ajouter la configuration suivante:
+                ```json
+
+                    {
+                "scripts": {
+                    "test": "vitest"
+                }
+                }
+                ```
+
+    - Spécification des répertoires de tests et de leur structure.
+    Il est important de spécifier les répertoires où se trouvent vos tests ainsi que leur structure. Vitest suit généralement une convention de structuration des tests pour faciliter l'organisation et l'exécution des tests. Assurez-vous de respecter cette convention pour que Vitest puisse découvrir et exécuter vos tests correctement.
+
+    Par exemple, vous pourriez organiser vos tests dans un répertoire tests à la racine de votre projet, avec des sous-répertoires pour chaque module ou composant, et des fichiers de test portant le même nom que les fichiers qu'ils testent.
+
+
+            project/
+        ├── src/
+        │ ├── module1.js
+        │ └── module2.js
+        └── tests/
+        ├── module1.test.js
+        └── module2.test.js
+
 ## Écriture de tests unitaires en JavaScript avec Vitest
 
 Dans cette partie, nous allons plonger dans l'écriture de tests unitaires en JavaScript en utilisant Vitest. Nous allons commencer par comprendre la structure de base des tests avec Vitest, puis nous allons écrire des tests simples pour des fonctions JavaScript, en utilisant des assertions pour vérifier les résultats attendus.
@@ -290,3 +320,21 @@ export async function fetchRandomUser() {
     Utilisez Vitest pour écrire un test pour la fonction fetchRandomUser().
     Assurez-vous d'attendre de manière asynchrone la résolution de la promesse retournée par la fonction.
     Vérifiez que les données renvoyées sont bien un objet JSON contenant les informations sur l'utilisateur.
+
+### Couverture de code
+
+Pour la couverture de code, c’est-à-dire la vérification du taux de code couvert par les tests unitaires – un indicateur de qualité de logiciel de plus en plus présent dans les projets – il suffit d’ajouter l’option **--coverage** à l’appel du test, par exemple dans votre fichier package.json :
+
+        "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test:coverage": "vitest --coverage"}
+
+Ensuite, vous pouvez lancer la couverture de code avec : **npm run test:coverage**
+
+![Screenshot](assets/coverage.PNG)
+
+## Travail à rendre 
+!!! Exercice
+    Choisissez un projet, qu'il soit personnel ou open-source, puis créez au moins trois tests unitaires pour ce projet. Ensuite, exécutez ces tests en incluant le calcul de la couverture de code.
