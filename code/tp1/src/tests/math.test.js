@@ -1,5 +1,9 @@
-import { describe, expect, it,test } from "vitest";
+import { describe, expect, it,test,vi } from "vitest";
 import { max,trier } from "../math";
+  // calculator.test.ts
+import { calculate } from '../calculator';
+
+vi.mock("../match")
 
 describe('max',()=>{
     it('should return the first argument if it is greater',()=>{
@@ -30,3 +34,42 @@ test('Tri d\'un tableau vide', () => {
     const resultat = trier(tableau);
     expect(resultat).toEqual([1, 2, 3, 4, 5]);
   });
+
+
+
+// Mocking la fonction add
+
+// Import the necessary modules
+/*import { vi, it, expect, describe } from 'vitest';
+import { calculate } from '../calculator';
+import { add } from '../math';
+
+// Create a mock for the add function
+vi.mock('./math', () => ({
+  add: vi.fn(),
+}));
+
+// Describe the test suite
+describe('calculate function', () => {
+  // Test case using mock data
+  it('adds two numbers', () => {
+    // Mocking the add function to return a specific value
+    add.mock = () => 5;
+
+    // Test input data
+    const a = 2;
+    const b = 3;
+
+    // Call the calculate function
+    const result = calculate(a, b);
+
+    // Assertion
+    expect(result).toBe(5); // Expect the result to be 5
+    expect(add).toHaveBeenCalledWith(a, b); // Expect add function to be called with correct arguments
+  });
+
+  // Additional test cases can be added here for edge cases, boundary conditions, etc.
+});
+
+*/
+

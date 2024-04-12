@@ -16,4 +16,8 @@ export function max(a, b) {
   export function trier(tableau) {
     return tableau.sort((a, b) => a - b);
 }
+
+export function add(a , b ) {
+  return a + b;
+}
   
