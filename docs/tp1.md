@@ -337,4 +337,4 @@ Ensuite, vous pouvez lancer la couverture de code avec : **npm run test:coverage
 
 ## Travail à rendre 
 !!! Exercice
-    Choisissez un projet, qu'il soit personnel ou open-source, puis créez au moins trois tests unitaires pour ce projet. Ensuite, exécutez ces tests en incluant le calcul de la couverture de code.
+    Choisir un projet, qu'il soit personnel ou open-source, puis créez au moins trois tests unitaires pour ce projet. Ensuite, exécuter ces tests en incluant le calcul de la couverture de code.
