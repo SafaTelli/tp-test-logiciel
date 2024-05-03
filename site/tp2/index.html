@@ -468,7 +468,7 @@
 <h2 id="plan-du-tp">Plan du TP</h2>
 <ol>
 <li>
-<p>Introduction aux tests de bout en bout ( end to end testing )</p>
+<p>Introduction aux tests de bout en bout ( end to end testing E2E)</p>
 </li>
 <li>
 <p>Présentation de Selenium</p>
@@ -486,21 +486,44 @@
 </li>
 </ol>
 <h2 id="introduction-aux-tests-de-bout-en-bout">Introduction aux tests de bout en bout</h2>
-<h2 id="presentation-de-selenium">Présentation de Selenium</h2>
+<p>Les tests de bout en bout sont une approche de test logiciel qui vise à vérifier le bon fonctionnement d'une application dans son ensemble, en simulant le parcours complet de l'utilisateur, de l'interface utilisateur à la base de données. Ces tests reproduisent les actions réelles que les utilisateurs effectueraient, en s'assurant que toutes les parties de l'application fonctionnent correctement ensemble.</p>
 <ol>
 <li>
-<p>Introduction à Selenium : qu'est-ce que c'est ?</p>
+<p>Objectif des tests de bout en bout :</p>
+<p>Les tests E2E visent à garantir que toutes les fonctionnalités d'une application fonctionnent correctement ensemble, de manière intégrée. Ils permettent de valider le flux complet de l'application, en testant chaque étape du processus utilisateur, de l'interaction avec l'interface utilisateur à la manipulation des données dans la base de données.</p>
+</li>
+<li>
+<p>Portée des tests de bout en bout :</p>
+<p>Les tests de bout en bout couvrent l'ensemble de l'application, y compris l'interface utilisateur, les interactions avec les composants backend, les services, les bases de données, etc. Ils sont généralement réalisés dans un environnement similaire à celui de la production pour garantir une validation réaliste du comportement de l'application.</p>
+</li>
+<li>
+<p>Outils pour les tests de bout en bout :</p>
+<p>Plusieurs outils sont disponibles pour automatiser les tests de bout en bout. Parmi les plus populaires figurent Selenium, Puppeteer, Cypress, TestCafe, etc. Ces outils offrent des fonctionnalités pour simuler les interactions utilisateur sur le navigateur, effectuer des assertions sur les éléments de l'interface utilisateur et exécuter des tests dans un environnement contrôlé.</p>
+</li>
+<li>
+<p>Avantages des tests de bout en bout :</p>
 <ul>
-<li>xx</li>
-<li>xx</li>
-<li>xx</li>
+<li>
+<p>Détection précoce des problèmes : Les tests E2E permettent de détecter les problèmes d'intégration entre les différents composants de l'application dès les premiers stades du développement.</p>
+</li>
+<li>
+<p>Validation complète de l'application : Ils garantissent que toutes les fonctionnalités de l'application fonctionnent correctement ensemble, offrant ainsi une meilleure qualité globale.</p>
+</li>
+<li>Automatisation des scénarios complexes : Les tests E2E permettent d'automatiser des scénarios utilisateur complexes, réduisant ainsi le temps nécessaire pour effectuer des tests manuels répétitifs.</li>
 </ul>
 </li>
+</ol>
+<h2 id="presentation-de-selenium">Présentation de Selenium</h2>
+<ol>
+<li>Introduction à Selenium : qu'est-ce que c'est ?</li>
+</ol>
+<p>Selenium est un outil de test automatisé largement utilisé pour automatiser les tests fonctionnels de sites Web. Il permet aux développeurs et aux testeurs de créer des scripts de test dans divers langages de programmation tels que Java, Python, C#, etc., pour simuler les interactions utilisateur sur un navigateur web.</p>
+<ol>
 <li>
 <p>Selenium IDE : qu'est-ce que c'est et comment ça fonctionne.</p>
-</li>
-<li>
-<p>Présentation de Selenium IDE</p>
+<ul>
+<li>Présentation de Selenium IDE</li>
+</ul>
 </li>
 </ol>
 <p>Selenium IDE est un environnement de développement intégré (IDE) pour Selenium, un ensemble d'outils d'automatisation de tests largement utilisés dans le domaine du développement logiciel. Conçu spécifiquement pour les applications web, Selenium IDE permet aux testeurs et aux développeurs de créer, de modifier et d'exécuter des tests automatisés de manière intuitive et efficace. Avec Selenium IDE, les utilisateurs peuvent enregistrer des interactions utilisateur, telles que les clics de souris, la saisie de texte et la navigation sur les pages web, et générer du code de test automatisé qui peut être exécuté pour vérifier le bon fonctionnement de l'application web sous test.</p>
@@ -594,7 +617,72 @@
 <h2 id="travail-a-rendre">Travail à rendre</h2>
 <div class="admonition exercice">
 <p class="admonition-title">Exercice</p>
-<p><a href="../assets/hello.html">Aller à la page exemple</a></p>
+<p>L'objectif est d'utiliser Selenium IDE pour automatiser le test de la page <a href="../assets/hello.html">suivante</a></p>
+<ol>
+<li>
+<p>Ouvrez Selenium IDE.</p>
+</li>
+<li>
+<p>Créez un nouveau test dans Selenium IDE.</p>
+</li>
+<li>
+<p>Enregistrez un nouveau scénario de test en utilisant l'outil d'enregistrement.</p>
+</li>
+<li>
+<p>Exécutez le test pour vérifier son bon fonctionnement initial.</p>
+</li>
+<li>
+<p>Modifiez le script pour changer la valeur du nom d'utilisateur enregistré dans l'enregistrement précédent.</p>
+</li>
+<li>
+<p>Ajoutez une nouvelle commande "Assert Text" pour vérifier que le message affiché est correct après avoir cliqué sur le bouton "Bonjour".</p>
+</li>
+<li>
+<p>Exécutez le script de test pour deux cas : un cas où l'assertion réussit et un cas où l'assertion échoue, en modifiant le nom d'utilisateur pour chaque cas.</p>
+</li>
+<li>
+<p>Analysez les résultats et identifiez les écarts entre les résultats attendus et réels.</p>
+</li>
+<li>
+<p>Faites des ajustements au script si nécessaire pour corriger les erreurs ou les échecs de l'assertion.</p>
+</li>
+</ol>
+</div>
+<div class="admonition exercice">
+<p class="admonition-title">Exercice</p>
+<p>L'objectif est d'utiliser Selenium IDE pour automatiser le test de la calculatrice <a href="../assets/calc.html">suivante</a></p>
+<ol>
+<li>Utilisez Selenium IDE pour enregistrer une série d'actions qui testent différentes fonctionnalités de la calculatrice, en vous assurant de couvrir les cas suivants :</li>
+<li>Testez l'addition de deux nombres.</li>
+<li>Testez la soustraction de deux nombres.</li>
+<li>Testez la multiplication de deux nombres.</li>
+<li>Testez la division de deux nombres.</li>
+<li>Testez la division par zéro et assurez-vous que le message d'erreur approprié est affiché le cas échéant.</li>
+<li>Testez des cas de valeurs nulles ou vides dans les champs de saisie.</li>
+<li>Ajoutez des assertions pour vérifier que les résultats affichés sont corrects.</li>
+<li>Organisez vos tests en suites logiques pour une meilleure gestion.</li>
+<li>Exécutez vos tests pour vérifier qu'ils passent tous avec succès.</li>
+</ol>
+</div>
+<div class="admonition exercice">
+<p class="admonition-title">Exercice</p>
+<ol>
+<li>
+<p>Accédez au site <a href="https://www.demoblaze.com/">demoblaze</a> dans votre navigateur. Ce site propose une gamme de produits fictifs pour simuler un magasin en ligne.</p>
+</li>
+<li>
+<p>Utilisez Selenium IDE pour enregistrer une série d'actions qui testent différentes fonctionnalités du site, en vous assurant de couvrir les cas suivants :</p>
+</li>
+<li>Parcourez les différentes catégories de produits disponibles sur le site.</li>
+<li>Ajoutez un produit au panier.</li>
+<li>Accédez au panier, vérifiez les articles ajoutés et supprimez-en si nécessaire.</li>
+<li>Vérifiez la confirmation de la commande après le paiement.   </li>
+<li>Testez la fonction de recherche pour trouver un produit spécifique.</li>
+<li>Explorez les pages supplémentaires telles que la page d'accueil, la page "À propos", etc.</li>
+<li>Utilisez des variables pour stocker des données telles que les noms de produits, les adresses de livraison, etc., afin de rendre vos tests plus dynamiques et réutilisables.</li>
+<li>Ajoutez des assertions pour vérifier que les actions effectuées ont produit les résultats attendus.</li>
+<li>Exécutez vos tests pour vérifier qu'ils passent tous avec succès.</li>
+</ol>
 </div>
 
 
