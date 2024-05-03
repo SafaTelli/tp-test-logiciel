@@ -1,0 +1,656 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp1/">
+      
+      
+      
+      <link rel="icon" href="../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>TP2: Tests de bout en bout - TP TEST LOGICIEL - GL4 - 2023/2024</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#test-de-bout-en-bout-avec-selenium" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TP TEST LOGICIEL - GL4 - 2023/2024" class="md-header__button md-logo" aria-label="TP TEST LOGICIEL - GL4 - 2023/2024" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TP TEST LOGICIEL - GL4 - 2023/2024
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP2: Tests de bout en bout
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TP TEST LOGICIEL - GL4 - 2023/2024" class="md-nav__button md-logo" aria-label="TP TEST LOGICIEL - GL4 - 2023/2024" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    TP TEST LOGICIEL - GL4 - 2023/2024
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TP1: Tests Unitaires
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TP2: Tests de bout en bout
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    TP2: Tests de bout en bout
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duree-estimee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durée estimée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plan-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-aux-tests-de-bout-en-bout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction aux tests de bout en bout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-de-selenium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Présentation de Selenium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-des-testes-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Création des testes simples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#travail-a-rendre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Travail à rendre
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duree-estimee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durée estimée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plan-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan du TP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-aux-tests-de-bout-en-bout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction aux tests de bout en bout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-de-selenium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Présentation de Selenium
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-des-testes-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Création des testes simples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#travail-a-rendre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Travail à rendre
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="test-de-bout-en-bout-avec-selenium">Test de bout en bout avec Selenium</h1>
+<p><img alt="Screenshot" src="../assets/selenium.png" /></p>
+<h2 id="objectifs-du-tp">Objectifs du TP</h2>
+<ol>
+<li>Comprendre l'importance des tests de bout en bout le développement logiciel.</li>
+<li>Apprendre à utiliser Selenium IDE pour l'automatisation des tests.</li>
+<li>Créer et exécuter des tests sur des applications web.</li>
+</ol>
+<h2 id="duree-estimee">Durée estimée</h2>
+<p>3 heures</p>
+<h2 id="plan-du-tp">Plan du TP</h2>
+<ol>
+<li>
+<p>Introduction aux tests de bout en bout ( end to end testing )</p>
+</li>
+<li>
+<p>Présentation de Selenium</p>
+<ul>
+<li>Selenium IDE : qu'est-ce que c'est et comment ça fonctionne.</li>
+<li>Présentation de l'interface utilisateur de Selenium IDE</li>
+<li>Installation de Selenium IDE.</li>
+</ul>
+</li>
+<li>
+<p>Création de tests simples</p>
+</li>
+<li>
+<p>Analyse et débogage des tests</p>
+</li>
+</ol>
+<h2 id="introduction-aux-tests-de-bout-en-bout">Introduction aux tests de bout en bout</h2>
+<h2 id="presentation-de-selenium">Présentation de Selenium</h2>
+<ol>
+<li>
+<p>Introduction à Selenium : qu'est-ce que c'est ?</p>
+<ul>
+<li>xx</li>
+<li>xx</li>
+<li>xx</li>
+</ul>
+</li>
+<li>
+<p>Selenium IDE : qu'est-ce que c'est et comment ça fonctionne.</p>
+</li>
+<li>
+<p>Présentation de Selenium IDE</p>
+</li>
+</ol>
+<p>Selenium IDE est un environnement de développement intégré (IDE) pour Selenium, un ensemble d'outils d'automatisation de tests largement utilisés dans le domaine du développement logiciel. Conçu spécifiquement pour les applications web, Selenium IDE permet aux testeurs et aux développeurs de créer, de modifier et d'exécuter des tests automatisés de manière intuitive et efficace. Avec Selenium IDE, les utilisateurs peuvent enregistrer des interactions utilisateur, telles que les clics de souris, la saisie de texte et la navigation sur les pages web, et générer du code de test automatisé qui peut être exécuté pour vérifier le bon fonctionnement de l'application web sous test.</p>
+<ul>
+<li>Fonctionnement de Selenium IDE</li>
+</ul>
+<p>Selenium IDE fonctionne comme une extension de navigateur pour Google Chrome et Mozilla Firefox. Une fois installé dans le navigateur, Selenium IDE offre une interface conviviale qui permet aux utilisateurs d'enregistrer des scénarios de test en effectuant des actions directement dans le navigateur. Par exemple, un testeur peut ouvrir une page web, cliquer sur différents éléments de l'interface utilisateur, saisir du texte dans les champs de formulaire, soumettre des formulaires, etc. Pendant l'enregistrement, Selenium IDE capture ces interactions et génère automatiquement du code de test basé sur les actions de l'utilisateur. Une fois l'enregistrement terminé, les utilisateurs peuvent modifier le code de test généré pour l'adapter à leurs besoins spécifiques, en ajoutant des validations, des boucles, des conditions, etc. Enfin, les tests peuvent être exécutés à tout moment à l'aide de Selenium IDE, ce qui permet de vérifier automatiquement le bon fonctionnement de l'application web sous test.</p>
+<ol>
+<li>Présentation de l'interface utilisateur de Selenium IDE</li>
+</ol>
+<p>Selenium IDE se présente comme suit :
+<img alt="Screenshot" src="../assets/ide.png" /></p>
+<ol>
+<li>URL racine de l'interface web à tester</li>
+<li>Barre d'outils de débug (point de départ, point d'arrêt, lecture pas à pas, ...)</li>
+<li>Liste des suites de tests ouvertes</li>
+<li>Fonctions appelées et paramètres</li>
+<li>Bouton d'enregistrement des interractions de l'utilisateur. En appuyant dessus, toutes les actions de l'utilisateur dans l'interface web seront automatiquement enregistrées et apparaitront dans l'encadré n°4</li>
+<li>Log(log des fonctions appelées / Référence(documentation des fonctions) / UI-Element (rarement rempli contient des informations en plus de l'onglet référence) / Combinaison</li>
+<li>Onglet Table/Source. (actuellement visible : Table). L'onglet Source est détaillé plus bas.</li>
+</ol>
+<p>Nous pouvons constater que le choix de la cible se fait de manière intelligente :
+<img alt="Screenshot" src="../assets/cmde.png" /></p>
+<p>Si nous enregistrons un texte avec le bouton d'enregistrement, alors selenium IDE nous propose tout les choix possible pour l'identification du champs : son ID, son name attribute, son Xpath, etc...</p>
+<ol>
+<li>Installation de Selenium IDE</li>
+</ol>
+<p>Pour installer Selenium IDE sur Google Chrome, ajoutez l'extension de Selenium IDE dans le navigateur web. Suivez les étapes ci-dessous :</p>
+<ul>
+<li>Ouvrez le navigateur Google Chrome sur votre système, puis rendez-vous sur le lien. Cela vous dirigera vers le Chrome Web Store où vous devrez ajouter l'extension de Selenium IDE à votre navigateur Chrome. Cliquez sur le bouton "Ajouter à Chrome".</li>
+</ul>
+<p><img alt="Screenshot" src="../assets/plugin.png" /></p>
+<ul>
+<li>
+<p>Lorsque vous cliquez sur le bouton "Ajouter à Chrome", une boîte de dialogue d'avertissement apparaîtra à l'écran. Cliquez simplement sur le bouton "Ajouter l'extension" pour finalement ajouter l'extension à votre navigateur Chrome.</p>
+</li>
+<li>
+<p>Maintenant, vous devez cliquer sur l'icône de l'extension dans le navigateur Google Chrome, située dans le coin supérieur droit. Une liste d'extensions apparaîtra à l'écran, épinglez l'extension Selenium IDE.</p>
+</li>
+</ul>
+<p><img alt="Screenshot" src="../assets/icone.png" /></p>
+<ul>
+<li>Maintenant, cliquez sur Selenium IDE pour commencer à travailler avec Selenium IDE. Vous pouvez désormais enregistrer un nouveau test dans un nouveau projet, ouvrir un projet existant et également créer un nouveau projet.</li>
+</ul>
+<p><img alt="Screenshot" src="../assets/test.png" /></p>
+<h2 id="creation-des-testes-simples">Création des testes simples</h2>
+<p>Nous allons effectuer un test simple de bout en bout avec Selenium IDE. Pour celà suivez les étapes suivantes : </p>
+<ol>
+<li>
+<p>Ouvrez l'extension Selenium IDE installée pour accéder à son interface par défaut. Ensuite, cliquez sur "Créer un nouveau projet".</p>
+<p><img alt="Screenshot" src="../assets/new.PNG" /></p>
+</li>
+<li>
+<p>La prochaine étape consiste à attribuer un nom à votre projet. Vous pouvez donner n'importe quel nom qui reflète l'identité de votre projet.</p>
+<p><img alt="Screenshot" src="../assets/testname.PNG" /></p>
+</li>
+<li>
+<p>Pour commencer le processus de création d'un cas de test pour votre site web, ajoutez un nouveau cas de test en cliquant sur le symbole ‘+’ dans l'onglet "Tests" et nommez votre test.</p>
+<p><img alt="Screenshot" src="../assets/newcase.png" /></p>
+</li>
+<li>
+<p>Une URL de base de lecture est nécessaire pour exécuter votre cas de test ; votre cas de test commencera à partir de l'URL que vous fournirez. Ajoutez une URL de base de lecture, par exemple https://www.<a href="https://insat.rnu.tn/">geeksforgeeks.org</a>/, dans l'onglet tel qu'illustré dans l'image ci-dessous.</p>
+<p><img alt="Screenshot" src="../assets/insattest.PNG" /></p>
+</li>
+<li>
+<p>Pour commencer l'enregistrement de votre cas de test, cliquez sur le bouton d'enregistrement disponible. Il capturera chaque interaction avec l'application web en temps réel.</p>
+<p><img alt="Screenshot" src="../assets/record.png" /></p>
+</li>
+<li>
+<p>Visitez le site web que vous souhaitez tester et effectuez les actions spécifiques que vous souhaitez intégrer dans votre cas de test. Selenium IDE enregistrera ces actions en tant qu'étapes dans votre cas de test.</p>
+</li>
+<li>
+<p>Une fois que vous avez terminé vos interactions, cliquez sur le bouton "Arrêter l'enregistrement" dans Selenium IDE.</p>
+<p><img alt="Screenshot" src="../assets/stop.PNG" /></p>
+</li>
+<li>
+<p>Cliquez sur le bouton "Exécuter le test actuel" pour exécuter votre cas de test ; il rejouera les actions que vous avez effectuées. Observez les interactions et vous pouvez identifier tout problème lors de l'exécution du test.</p>
+<p><img alt="Screenshot" src="../assets/run.png" /></p>
+</li>
+<li>
+<p>Vous pouvez facilement évaluer le résumé de votre cas de test en vérifiant la section "log" ci-dessous, ce qui vous aidera à identifier si des étapes ont échoué ou réussi.</p>
+<p><img alt="Screenshot" src="../assets/runing.PNG" /></p>
+</li>
+<li>
+<p>Cliquez sur les trois points situés sur le côté droit de votre test, puis sélectionnez "Exporter" pour exporter votre cas de test dans le langage de votre choix, afin de pouvoir l'utiliser avec d'autres outils et cadres Selenium pour diverses fins de test et d'automatisation.</p>
+<p><img alt="Screenshot" src="../assets/export.png" /></p>
+<p>Il vous proposera des options pour exporter votre cas de test dans les langages donnés. Vous pouvez choisir n'importe quel langage parmi ceux proposés pour exporter votre cas de test.</p>
+<p><img alt="Screenshot" src="../assets/lang.png" /></p>
+</li>
+</ol>
+<h2 id="travail-a-rendre">Travail à rendre</h2>
+<div class="admonition exercice">
+<p class="admonition-title">Exercice</p>
+<p><a href="../assets/hello.html">Aller à la page exemple</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Safa Telli
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+    
+  </body>
+</html>
