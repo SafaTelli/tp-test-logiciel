@@ -120,7 +120,7 @@ Nous allons effectuer un test simple de bout en bout avec Selenium IDE. Pour cel
 
       ![Screenshot](assets/newcase.png)
 
-  4.  Une URL de base de lecture est nécessaire pour exécuter votre cas de test ; votre cas de test commencera à partir de l'URL que vous fournirez. Ajoutez une URL de base de lecture, par exemple https://www.[geeksforgeeks.org](https://insat.rnu.tn/)/, dans l'onglet tel qu'illustré dans l'image ci-dessous.
+  4.  Une URL de base de lecture est nécessaire pour exécuter votre cas de test ; votre cas de test commencera à partir de l'URL que vous fournirez. Ajoutez une URL de base de lecture, par exemple [https://insat.rnu.tn](https://insat.rnu.tn/)/, dans l'onglet tel qu'illustré dans l'image ci-dessous.
 
      ![Screenshot](assets/insattest.PNG)
 
